@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Driftwood Supply Co. — Outdoor gear for everyday adventures</title>
+    <meta name="description" content="Packs, boots, camp gear, and goods for the long way around." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/catalog.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#shop">Skip to products</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 4 26h24L16 4Zm0 7 6.5 12h-13L16 11Z" /></svg>
+          Driftwood Supply Co.
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="index.html#shop">Shop</a>
+          <a href="index.html?category=Camp%20Gear#shop">Camp Gear</a>
+          <a href="index.html?category=Apparel#shop">Apparel</a>
+        </nav>
+        <button id="cart-button" class="cart-button" type="button" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+          <span class="cart-button__count" data-cart-count hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__layout">
+          <div class="hero__inner">
+            <p class="eyebrow">Fall collection</p>
+            <h1>Gear for the long way around.</h1>
+            <p class="hero__text">Well-made packs, boots, and camp goods, built to last and priced fairly.</p>
+            <a href="#shop" class="button">Shop all products</a>
+          </div>
+          <img
+            class="hero__image"
+            src="https://burst.shopifycdn.com/photos/kettle-and-cup-in-front-of-tent.jpg?width=900"
+            srcset="https://burst.shopifycdn.com/photos/kettle-and-cup-in-front-of-tent.jpg?width=900 1x, https://burst.shopifycdn.com/photos/kettle-and-cup-in-front-of-tent.jpg?width=1600 2x"
+            alt="Enamel camp kettle and mug outside a tent"
+            fetchpriority="high"
+          />
+        </div>
+      </section>
+
+      <section id="shop" class="container shop" aria-labelledby="shop-title">
+        <div class="shop__head">
+          <h2 id="shop-title">Shop</h2>
+          <p id="result-count" class="muted" aria-live="polite"></p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="visually-hidden">Search products</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+            <input id="search" type="search" placeholder="Search products" autocomplete="off" />
+          </label>
+          <label class="select">
+            <span class="visually-hidden">Sort by</span>
+            <select id="sort"></select>
+          </label>
+        </div>
+
+        <div id="category-filter" class="chips" role="group" aria-label="Filter by category"></div>
+
+        <ul id="product-grid" class="grid" aria-label="Products"></ul>
+      </section>
+
+      <section class="perks container" aria-label="Why shop with us">
+        <div>
+          <h3>Free shipping over $75</h3>
+          <p class="muted">Fast, tracked delivery on every order.</p>
+        </div>
+        <div>
+          <h3>30-day returns</h3>
+          <p class="muted">Not right? Send it back, no questions asked.</p>
+        </div>
+        <div>
+          <h3>Built to last</h3>
+          <p class="muted">Gear we'd take on our own trips, and repair if it breaks.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>© Driftwood Supply Co. A demo storefront built on Shopify.</p>
+        <p>
+          Built by <a href="https://github.com/Adrielcodes">Adriel Ramirez</a> ·
+          <a href="https://github.com/Adrielcodes/driftwood-supply">Source on GitHub</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Cart drawer (filled in by js/cart.js) -->
+    <div id="cart-drawer" class="drawer" hidden>
+      <div class="drawer__overlay"></div>
+      <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <header class="drawer__header">
+          <h2 id="cart-title">Your cart</h2>
+          <button class="drawer__close" type="button" aria-label="Close cart">×</button>
+        </header>
+        <div class="drawer__body"></div>
+        <footer class="drawer__footer" hidden>
+          <div class="drawer__subtotal">
+            <span>Subtotal</span>
+            <strong data-subtotal></strong>
+          </div>
+          <p class="muted small">Shipping and taxes calculated at checkout.</p>
+          <a class="button button--block" data-checkout href="#">Check out</a>
+        </footer>
+      </aside>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

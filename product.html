@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Driftwood Supply Co.</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/product.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#product">Skip to product</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 4 26h24L16 4Zm0 7 6.5 12h-13L16 11Z" /></svg>
+          Driftwood Supply Co.
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="index.html#shop">Shop</a>
+          <a href="index.html?category=Camp%20Gear#shop">Camp Gear</a>
+          <a href="index.html?category=Apparel#shop">Apparel</a>
+        </nav>
+        <button id="cart-button" class="cart-button" type="button" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+          <span class="cart-button__count" data-cart-count hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="product" class="container product product--loading">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html#shop">Shop</a>
+        <span aria-hidden="true">/</span>
+        <a class="breadcrumb__category" href="index.html#shop"></a>
+        <span aria-hidden="true">/</span>
+        <span class="breadcrumb__current" aria-current="page"></span>
+      </nav>
+
+      <div class="product__layout">
+        <div class="gallery">
+          <div class="gallery__main"><div class="img-placeholder"></div></div>
+          <div class="gallery__thumbs" hidden></div>
+        </div>
+
+        <div class="product__info">
+          <p class="product__type eyebrow"></p>
+          <h1 class="product__title"><span class="skeleton-text"></span></h1>
+          <p class="product__price"></p>
+
+          <form class="purchase">
+            <div class="options"></div>
+
+            <div class="purchase__row">
+              <div class="stepper stepper--large" role="group" aria-label="Quantity">
+                <button type="button" data-qty-minus aria-label="Decrease quantity">−</button>
+                <input id="quantity" type="number" min="1" max="99" value="1" inputmode="numeric" aria-label="Quantity" />
+                <button type="button" data-qty-plus aria-label="Increase quantity">+</button>
+              </div>
+              <button type="submit" class="button purchase__add" data-add disabled>Add to cart</button>
+            </div>
+            <p class="product__stock" aria-live="polite"></p>
+          </form>
+
+          <p class="product__description"></p>
+
+          <ul class="product__perks">
+            <li>Free shipping on orders over $75</li>
+            <li>30-day free returns</li>
+            <li>Secure checkout by Shopify</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>© Driftwood Supply Co. A demo storefront built on Shopify.</p>
+        <p>
+          Built by <a href="https://github.com/Adrielcodes">Adriel Ramirez</a> ·
+          <a href="https://github.com/Adrielcodes/driftwood-supply">Source on GitHub</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Cart drawer (filled in by js/cart.js) -->
+    <div id="cart-drawer" class="drawer" hidden>
+      <div class="drawer__overlay"></div>
+      <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <header class="drawer__header">
+          <h2 id="cart-title">Your cart</h2>
+          <button class="drawer__close" type="button" aria-label="Close cart">×</button>
+        </header>
+        <div class="drawer__body"></div>
+        <footer class="drawer__footer" hidden>
+          <div class="drawer__subtotal">
+            <span>Subtotal</span>
+            <strong data-subtotal></strong>
+          </div>
+          <p class="muted small">Shipping and taxes calculated at checkout.</p>
+          <a class="button button--block" data-checkout href="#">Check out</a>
+        </footer>
+      </aside>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
