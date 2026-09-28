@@ -115,11 +115,14 @@ function renderPurchase() {
     return;
   }
 
-  const onSale = variant.compareAtPrice && Number(variant.compareAtPrice.amount) > Number(variant.price.amount);
+  const onSale = Boolean(variant.compareAtPrice) && Number(variant.compareAtPrice.amount) > Number(variant.price.amount);
+  // replaceChildren() would print "null"/"false" as text, so only pass real nodes
   priceNode.replaceChildren(
-    el("span", {}, formatMoney(variant.price)),
-    onSale && el("s", { class: "price-compare" }, formatMoney(variant.compareAtPrice)),
-    onSale && el("span", { class: "badge badge--sale" }, "Sale")
+    ...[
+      el("span", {}, formatMoney(variant.price)),
+      onSale && el("s", { class: "price-compare" }, formatMoney(variant.compareAtPrice)),
+      onSale && el("span", { class: "badge badge--sale" }, "Sale"),
+    ].filter(Boolean)
   );
 
   stock.textContent = variant.availableForSale ? "In stock, ready to ship" : "Sold out";
@@ -140,7 +143,14 @@ function selectOption(name, value) {
   renderPurchase();
 }
 
-const images = () => product.images.edges.map((e) => e.node);
+/** Product photos plus any variant photo that isn't already in the list. */
+function images() {
+  const all = product.images.edges.map((e) => e.node);
+  for (const variant of variants) {
+    if (variant.image && !all.some((img) => img.url === variant.image.url)) all.push(variant.image);
+  }
+  return all;
+}
 
 function renderProduct() {
   document.title = `${product.title} — Driftwood Supply Co.`;
