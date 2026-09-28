@@ -36,6 +36,11 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* Make the hidden attribute win over component display rules (grid, flex...) */
+[hidden] {
+  display: none !important;
+}
+
 h1,
 h2,
 h3,
