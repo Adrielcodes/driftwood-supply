@@ -1062,7 +1062,8 @@ select {
 
 @media (max-width: 560px) {
   .container {
-    padding: 0 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .toolbar {
     flex-direction: column;
