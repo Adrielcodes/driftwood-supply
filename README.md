@@ -4,6 +4,8 @@ A headless Shopify storefront built with **plain HTML, CSS, and JavaScript**: no
 
 **▶ Live store: https://driftwood-supply.vercel.app**
 
+![Driftwood Supply Co. storefront](docs/screenshot.png)
+
 ## Features
 
 - **Catalog:** product grid with instant search, category filters with counts, and sorting (price, newest, name). Filters are saved in the URL, so a filtered view can be shared.
